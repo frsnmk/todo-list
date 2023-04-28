@@ -18,15 +18,15 @@ export class TasksService {
     return await this.taskRepository.findAll();
   }
 
-  // findOne(id: string) {
-  //   return `This action returns a #${id} task`;
-  // }
+  async findOne(id: string) {
+    return await this.taskRepository.findById(id);
+  }
 
-  // update(id: string, updateTaskDto: UpdateTaskDTO) {
-  //   return `This action updates a #${id} task`;
-  // }
+  async update(id: string, updateTaskDto: UpdateTaskDTO) {
+    return await this.taskRepository.update(id, updateTaskDto);
+  }
 
-  // remove(id: string) {
-  //   return `This action removes a #${id} task`;
-  // }
+  async remove(id: string) {
+    return await this.taskRepository.delete(id);
+  }
 }
