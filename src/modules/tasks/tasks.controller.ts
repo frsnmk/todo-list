@@ -6,9 +6,11 @@ import {
   Put,
   Param,
   Delete,
+  Patch,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDTO, UpdateTaskDTO } from './tasks.dto';
+import { Task } from 'src/databases/model/task.entity';
 
 @Controller('tasks')
 export class TasksController {
@@ -37,5 +39,10 @@ export class TasksController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.tasksService.remove(id);
+  }
+
+  @Patch(':id/checklist')
+  checklist(@Param('id') id: string, @Body() task: Partial<Task>) {
+    return this.tasksService.checkTask(id, task);
   }
 }

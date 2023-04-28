@@ -34,4 +34,8 @@ export class TaskRepository {
       message: 'Task deleted successfully',
     };
   }
+
+  async checklistTask(id: string, task: Partial<Task>): Promise<any> {
+    await this.taskRepository.update(id, { has_finished: task.has_finished });
+  }
 }

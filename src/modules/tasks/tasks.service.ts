@@ -29,4 +29,8 @@ export class TasksService {
   async remove(id: string) {
     return await this.taskRepository.delete(id);
   }
+
+  async checkTask(id: string, task: Partial<Task>) {
+    return await this.taskRepository.checklistTask(id, task);
+  }
 }
