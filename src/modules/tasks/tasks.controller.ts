@@ -36,7 +36,10 @@ export class TasksController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDTO) {
+  update(
+    @Param('id') id: string,
+    @Body(new JoiValidationPipe(taskSchema)) updateTaskDto: UpdateTaskDTO,
+  ) {
     return this.tasksService.update(id, updateTaskDto);
   }
 
