@@ -11,13 +11,17 @@ import {
 import { TasksService } from './tasks.service';
 import { CreateTaskDTO, UpdateTaskDTO } from './tasks.dto';
 import { Task } from 'src/databases/model/task.entity';
+import { JoiValidationPipe } from 'src/common/joi.validation.pipe';
+import { taskSchema } from 'src/validations/tasks.validation';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
-  create(@Body() createTaskDto: CreateTaskDTO) {
+  create(
+    @Body(new JoiValidationPipe(taskSchema)) createTaskDto: CreateTaskDTO,
+  ) {
     return this.tasksService.create(createTaskDto);
   }
 
