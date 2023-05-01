@@ -10,6 +10,7 @@ import { AuthModule } from './modules/auth/auth.module';
     TypeOrmModule.forRoot(typeOrmConfiguration),
     TasksModule,
     UserModule,
+    AuthModule,
   ],
   providers: [],
 })
